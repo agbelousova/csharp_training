@@ -19,6 +19,7 @@ namespace WebAddressbookTests
         protected LoginHelper loginHelper;
         protected NavigationHelper navigationHelper;
         protected GroupHelper groupHelper;
+        protected ContactHelper contactHelper;
 
         [SetUp]
         public void SetupTest()
