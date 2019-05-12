@@ -67,7 +67,10 @@
     <Compile Include="Figure.cs" />
     <Compile Include="ContactCreationTests.cs" />
     <Compile Include="GroupData.cs" />
+    <Compile Include="GroupHelper.cs" />
     <Compile Include="GroupRemovalTest.cs" />
+    <Compile Include="LoginHelper.cs" />
+    <Compile Include="NavigationHelper.cs" />
     <Compile Include="Square.cs" />
     <Compile Include="GroupCreationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
