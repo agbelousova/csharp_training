@@ -11,11 +11,13 @@ namespace WebAddressbookTests
 {
     public class HalperBase
     {
+        protected ApplicationManager manager;
         protected IWebDriver driver;
 
-        public HalperBase(IWebDriver driver)
+        public HalperBase(ApplicationManager manager)
         {
-            this.driver = driver;
+            this.manager = manager;
+            this.driver = manager.Driver;
         }
     }
 }
