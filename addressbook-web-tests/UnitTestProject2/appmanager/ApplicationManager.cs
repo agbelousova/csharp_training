@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 
 namespace WebAddressbookTests
 {
-    public class TestBase
+    public class ApplicationManager
     {
         protected IWebDriver driver;
-        protected StringBuilder verificationErrors;
         protected string baseURL;
 
         protected LoginHelper loginHelper;
@@ -21,20 +19,15 @@ namespace WebAddressbookTests
         protected GroupHelper groupHelper;
         protected ContactHelper contactHelper;
 
-        [SetUp]
-        public void SetupTest()
+        public ApplicationManager()
         {
-            driver = new FirefoxDriver();
-            baseURL = "http://localhost/addressbook";
-            verificationErrors = new StringBuilder();
-
             loginHelper = new LoginHelper(driver);
             navigationHelper = new NavigationHelper(driver, baseURL);
             groupHelper = new GroupHelper(driver);
+            contactHelper = new ContactHelper(driver);
         }
 
-        [TearDown]
-        public void TeardownTest()
+        public void Stop()
         {
             try
             {
@@ -44,13 +37,38 @@ namespace WebAddressbookTests
             {
                 // Ignore errors if unable to close the browser
             }
-            Assert.AreEqual("", verificationErrors.ToString());
         }
 
-        protected void GoToContactPage()
+        public LoginHelper Auth
         {
-            driver.FindElement(By.LinkText("add new")).Click();
+            get
+            {
+                return loginHelper;
+            }
         }
 
+        public NavigationHelper Navigator
+        {
+            get
+            {
+                return navigationHelper;
+            }
+        }
+
+        public GroupHelper Groups
+        {
+            get
+            {
+                return groupHelper;
+            }
+        }
+
+        public ContactHelper Contacts
+        {
+            get
+            {
+                return contactHelper;
+            }
+        }
     }
 }
