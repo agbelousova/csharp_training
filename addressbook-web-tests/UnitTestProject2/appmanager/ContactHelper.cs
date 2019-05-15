@@ -18,9 +18,14 @@ namespace WebAddressbookTests
 
         public ContactHelper ModifyContact(int v, ContactData nawData)
         {
+
+            if (!IsElementPresent(By.Name("selected[]")))
+            {
+                ContactData contact = new ContactData("Bory", "DDDDDD");
+                CreateContact(contact);
+            }
             manager.Navigator.GoToHomePage();
-            SelectContact(v);
-            InitContactModification();
+            InitContactModification(v);
             FillContactForm(nawData);
             SubmitContactModification();
             manager.Navigator.GoToHomePage();
@@ -34,17 +39,24 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public ContactHelper InitContactModification()
+        public ContactHelper InitContactModification(int v)
         {
-            driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
+            driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + v + "]")).Click();
             return this;
         }
 
         public ContactHelper Remove(int v)
         {
+
+            if (!IsElementPresent(By.Name("selected[]")))
+            {
+                ContactData contact = new ContactData("Bory", "DDDDDD");
+                CreateContact(contact);
+            }
             manager.Navigator.GoToHomePage();
             SelectContact(v);
             RemoveContact();
+
             manager.Navigator.GoToHomePage();
 
             return this;
