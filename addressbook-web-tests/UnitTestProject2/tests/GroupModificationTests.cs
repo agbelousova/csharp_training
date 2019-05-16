@@ -14,6 +14,8 @@ namespace WebAddressbookTests
         [Test]
         public void GroupModificationTest()
         {
+            app.Groups.GroupExists();
+
             GroupData nawData = new GroupData("zzz");
             nawData.Header = null;
             nawData.Footer = null;

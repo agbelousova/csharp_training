@@ -19,11 +19,6 @@ namespace WebAddressbookTests
         public ContactHelper ModifyContact(int v, ContactData nawData)
         {
 
-            if (!IsElementPresent(By.Name("selected[]")))
-            {
-                ContactData contact = new ContactData("Bory", "DDDDDD");
-                CreateContact(contact);
-            }
             manager.Navigator.GoToHomePage();
             InitContactModification(v);
             FillContactForm(nawData);
@@ -48,17 +43,22 @@ namespace WebAddressbookTests
         public ContactHelper Remove(int v)
         {
 
-            if (!IsElementPresent(By.Name("selected[]")))
-            {
-                ContactData contact = new ContactData("Bory", "DDDDDD");
-                CreateContact(contact);
-            }
             manager.Navigator.GoToHomePage();
             SelectContact(v);
             RemoveContact();
 
             manager.Navigator.GoToHomePage();
 
+            return this;
+        }
+
+        public ContactHelper ContactExists()
+        {
+            if (!IsElementPresent(By.Name("selected[]")))
+            {
+                ContactData contact = new ContactData("Bory", "DDDDDD");
+                CreateContact(contact);
+            }
             return this;
         }
 
