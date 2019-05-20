@@ -7,6 +7,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 
+
 namespace WebAddressbookTests
 {
     public class ContactHelper : HalperBase
@@ -14,6 +15,23 @@ namespace WebAddressbookTests
 
         public ContactHelper(ApplicationManager manager) : base(manager)
         {
+        }
+
+        public List<ContactData> GetContactList()
+        {
+            List<ContactData> contacts = new List<ContactData>();
+            manager.Navigator.GoToHomePage();
+            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("span.center"));
+
+            foreach (IWebElement element in elements)
+            {
+                var lastname = element.FindElement(By.XPath(".//tr[@name='entry']/td[2]"));
+                var firstname = element.FindElement(By.XPath(".//tr[@name='entry']/td[3]"));
+         
+            }
+
+            return contacts;
+
         }
 
         public ContactHelper ModifyContact(int v, ContactData nawData)
