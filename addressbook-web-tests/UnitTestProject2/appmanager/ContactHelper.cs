@@ -21,13 +21,13 @@ namespace WebAddressbookTests
         {
             List<ContactData> contacts = new List<ContactData>();
             manager.Navigator.GoToHomePage();
-            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("span.center"));
+            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("span.entry"));
 
             foreach (IWebElement element in elements)
             {
-                var lastname = element.FindElement(By.XPath(".//tr[@name='entry']/td[2]"));
-                var firstname = element.FindElement(By.XPath(".//tr[@name='entry']/td[3]"));
-         
+                var lastName = element.FindElement(By.XPath(".//tr[@name='entry']/td[2]"));
+                var firstName = element.FindElement(By.XPath(".//tr[@name='entry']/td[3]"));
+                contacts.Add(new ContactData(firstName.Text, lastName.Text));
             }
 
             return contacts;
