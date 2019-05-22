@@ -96,6 +96,7 @@ namespace WebAddressbookTests
             
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
             driver.SwitchTo().Alert().Accept();
+            driver.FindElement(By.CssSelector("div.msgbox"));
             contactCache = null;
             return this;
         }

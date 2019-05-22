@@ -26,11 +26,14 @@ namespace WebAddressbookTests
         {
             driver = new FirefoxDriver();
             baseURL = "http://localhost";
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
 
             loginHelper = new LoginHelper(this);
             navigationHelper = new NavigationHelper(this, baseURL);
             groupHelper = new GroupHelper(this);
             contactHelper = new ContactHelper(this);
+            
+
         }
 
          ~ApplicationManager()
@@ -42,6 +45,7 @@ namespace WebAddressbookTests
             catch (Exception)
             {
                 // Ignore errors if unable to close the browser
+                
             }
         }
         public static ApplicationManager GetInstance()
