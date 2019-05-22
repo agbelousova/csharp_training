@@ -21,17 +21,17 @@ namespace WebAddressbookTests
         {
             List<ContactData> contacts = new List<ContactData>();
             manager.Navigator.GoToHomePage();
-            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("span.entry"));
+            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr[name=entry]"));
 
             foreach (IWebElement element in elements)
             {
-                var lastName = element.FindElement(By.XPath(".//tr[@name='entry']/td[2]"));
-                var firstName = element.FindElement(By.XPath(".//tr[@name='entry']/td[3]"));
-                contacts.Add(new ContactData(firstName.Text, lastName.Text));
+                contacts.Add(new ContactData (element.FindElement(By.XPath(".//td[2]")).Text,
+               element.FindElement(By.XPath(".//td[3]")).Text));
+
             }
 
             return contacts;
-
+            
         }
 
         public ContactHelper ModifyContact(int v, ContactData nawData)
@@ -54,7 +54,7 @@ namespace WebAddressbookTests
 
         public ContactHelper InitContactModification(int v)
         {
-            driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + v + "]")).Click();
+            driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + (v+1) + "]")).Click();
             return this;
         }
 
@@ -85,6 +85,7 @@ namespace WebAddressbookTests
             
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
             driver.SwitchTo().Alert().Accept();
+
             return this;
         }
 
@@ -102,9 +103,9 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public ContactHelper SelectContact(int index)
+        public ContactHelper SelectContact(int v)
         {
-            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + (v +1) + "]")).Click();
             return this;
         }
         public ContactHelper SubmitContactCreation()

@@ -17,8 +17,6 @@ namespace WebAddressbookTests
         [Test]
         public void ContactCreationTest()
         {
-
-
             ContactData contact = new ContactData("Ivan", "Petrov");
             contact.Company = "MTS";
 
@@ -30,7 +28,7 @@ namespace WebAddressbookTests
             oldContacts.Add(contact);
             oldContacts.Sort();
             newContacts.Sort();
-            Assert.AreEqual(oldContacts.Count +1, newContacts);
+            Assert.AreEqual(oldContacts, newContacts);
         }
 
     }
