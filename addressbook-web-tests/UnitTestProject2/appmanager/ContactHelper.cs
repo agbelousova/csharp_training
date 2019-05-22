@@ -17,21 +17,31 @@ namespace WebAddressbookTests
         {
         }
 
+        private List<ContactData> contactCache = null;
+
         public List<ContactData> GetContactList()
         {
-            List<ContactData> contacts = new List<ContactData>();
+            if (contactCache == null)
+            {
+                contactCache = new List<ContactData>();
+
             manager.Navigator.GoToHomePage();
             ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr[name=entry]"));
 
-            foreach (IWebElement element in elements)
-            {
-                contacts.Add(new ContactData (element.FindElement(By.XPath(".//td[2]")).Text,
-               element.FindElement(By.XPath(".//td[3]")).Text));
-
+                foreach (IWebElement element in elements)
+                {
+                    contactCache.Add(new ContactData(element.FindElement(By.XPath(".//td[2]")).Text,
+                      element.FindElement(By.XPath(".//td[3]")).Text));
+                }
             }
 
-            return contacts;
-            
+            return new List<ContactData>(contactCache);
+
+        }
+
+        public int GetContactCount()
+        {
+            return driver.FindElements(By.CssSelector("tr[name=entry]")).Count;
         }
 
         public ContactHelper ModifyContact(int v, ContactData nawData)
@@ -49,6 +59,7 @@ namespace WebAddressbookTests
         public ContactHelper SubmitContactModification()
         {
             driver.FindElement(By.Name("update")).Click();
+            contactCache = null;
             return this;
         }
 
@@ -85,7 +96,7 @@ namespace WebAddressbookTests
             
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
             driver.SwitchTo().Alert().Accept();
-
+            contactCache = null;
             return this;
         }
 
@@ -111,6 +122,7 @@ namespace WebAddressbookTests
         public ContactHelper SubmitContactCreation()
         {
             driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            contactCache = null;
             return this;
         }
 
