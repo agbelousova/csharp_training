@@ -29,8 +29,11 @@ namespace WebAddressbookTests
             {
                 return true;
             }
-
-            return lastName + firstName == other.LastName + FirstName;
+            if (lastName == other.LastName)
+            {
+                return firstName == other.FirstName;
+            }
+            return lastName == other.LastName;
 
         }
 
@@ -45,7 +48,11 @@ namespace WebAddressbookTests
             {
                 return 1;
             }
-            return (lastName + firstName).CompareTo(other.LastName + FirstName);
+            if (lastName == other.LastName)
+            {
+                return firstName.CompareTo(other.FirstName);
+            }
+            return lastName.CompareTo(other.LastName);
         }
 
         public override string ToString()
