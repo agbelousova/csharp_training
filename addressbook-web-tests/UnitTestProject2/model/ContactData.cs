@@ -11,7 +11,6 @@ namespace WebAddressbookTests
 
         private string firstName;
         private string lastName;
-        public string Name;
         private string company = "";
 
         public ContactData(string lastName, string firstName)
@@ -31,8 +30,7 @@ namespace WebAddressbookTests
                 return true;
             }
 
-            Name = lastName + firstName;
-            return Name == other.LastName + FirstName;
+            return lastName + firstName == other.LastName + FirstName;
 
         }
 
@@ -47,8 +45,7 @@ namespace WebAddressbookTests
             {
                 return 1;
             }
-            Name = lastName + firstName;
-            return Name.CompareTo(other.LastName + FirstName);
+            return (lastName + firstName).CompareTo(other.LastName + FirstName);
         }
 
         public override string ToString()
