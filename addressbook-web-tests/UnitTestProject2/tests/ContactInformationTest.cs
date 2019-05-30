@@ -22,6 +22,7 @@ namespace WebAddressbookTests
             Assert.AreEqual(formTable, formForm);
             Assert.AreEqual(formTable.Address, formForm.Address);
             Assert.AreEqual(formTable.AllPhones, formForm.AllPhones);
+            Assert.AreEqual(formTable.AllEmail, formForm.AllEmail);
 
         }
     }
