@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace WebAddressbookTests
 {
     public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
         private string allPhones;
-        private string allEmail;
+        private string allEmail, detailsInfo;
 
         public ContactData(string lastName, string firstName)
         {
@@ -70,6 +71,8 @@ namespace WebAddressbookTests
 
         public string WorkPhone { get; set; }
 
+        public string Fax { get; set; }
+
         public string Email { get; set; }
 
         public string Email2 { get; set; }
@@ -129,5 +132,94 @@ namespace WebAddressbookTests
 
         public string Company { get; set; }
 
+        private string Clean(string phone)
+        {
+            if (phone == "" || phone == null)
+            {
+                return "";
+            }
+            else
+            {
+                return Regex.Replace(phone, "[ -()]", "");
+            }
+        }
+
+        public string DetailsInfo
+        {
+            get
+            {
+                if (detailsInfo != "")
+                {
+                    return detailsInfo;
+                }
+                else
+                {
+                    detailsInfo = "";
+
+                    if (FirstName != "")
+                    {
+                        detailsInfo += FirstName + " ";
+                    }
+
+                    if (LastName != "")
+                    {
+                        detailsInfo += LastName + "\r\n";
+                    }
+
+                    if (Address != "")
+                    {
+                        detailsInfo += Address + "\r\n\r\n";
+                    }
+
+                    if (HomePhone != "")
+                    {
+                        detailsInfo += "H: " + Clean(HomePhone) + "\r\n";
+                    }
+
+                    if (MobilePhone != "")
+                    {
+                        detailsInfo += "M: " + Clean(MobilePhone) + "\r\n";
+                    }
+
+                    if (WorkPhone != "")
+                    {
+                        detailsInfo += "M: " + Clean(WorkPhone) + "\r\n";
+                    }
+
+                    if (Fax != "")
+                    {
+                        detailsInfo += "F: " + Clean(Fax) + "\r\n\r\n";
+                    }
+
+                    if (Email != "")
+                    {
+                        detailsInfo += Email + "\r\n";
+                    }
+
+                    if (Email2 != "")
+                    {
+                        detailsInfo += Email2 + "\r\n";
+                    }
+
+                    if (Email3 != "")
+                    {
+                        detailsInfo += Email3 + "\r\n";
+                    }
+
+                    return detailsInfo.Trim();
+                }
+            }
+
+            set
+            {
+                detailsInfo = value;
+            }
+        }
+
+
+        public ContactData(string detailsinfo)
+        {
+            DetailsInfo = detailsInfo;
+        }
     }
 }

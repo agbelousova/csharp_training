@@ -179,5 +179,37 @@ namespace WebAddressbookTests
                 Email3 = email3
             };
         }
+
+        public ContactData GetContactInfoFromDetails(int index)
+        {
+            manager.Navigator.GoToHomePage();
+            DetailsContactBtn(0);
+            string text = driver.FindElement(By.Id("content")).Text;
+            //return new ContactData(allInfo);
+            return new ContactData(text);
+        }
+
+        public ContactHelper DetailsContactBtn(int index)
+        {
+            driver.FindElement(By.XPath("(//img[@alt='Details'])[" + (index + 1) + "]")).Click();
+            return this;
+        }
+
+        public string GetContactPropertyForm()
+        {
+            manager.Navigator.GoToHomePage();
+            DetailsContact(0);
+
+           string propertyContact = driver.FindElement(By.Name("content")).Text;
+            return propertyContact;
+        }
+
+        public void DetailsContact(int index)
+        {
+            driver.FindElements(By.Name("entry"))[index]
+                .FindElements(By.TagName("td"))[6]
+                .FindElement(By.TagName("a")).Click();
+
+        }
     }
 }
