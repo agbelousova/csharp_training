@@ -17,6 +17,9 @@ namespace WebAddressbookTests
             this.FirstName = firstName;
             this.LastName = lastName;
         }
+        public ContactData()
+        {
+        }
 
         public bool Equals(ContactData other)
         {

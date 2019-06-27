@@ -7,6 +7,11 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
+using System.IO;
+using System.Xml;
+using System.Xml.Serialization;
+using Newtonsoft.Json;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace WebAddressbookTests
 {
