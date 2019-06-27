@@ -25,4 +25,8 @@
     <ProjectReference Include="..\UnitTestProject2\Addressbook.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
 </Project>

@@ -64,8 +64,25 @@ namespace Addressbook_test_generators
             Excel.Application app = new Excel.Application();
             app.Visible = true;
             Excel.Workbook wb = app.Workbooks.Add();
-            Excel.Worksheet sheet = wb.ActiveSheet;
-            sheet.Cells[1, 1] = "test";
+            Excel.Worksheet sheet = (Excel.Worksheet)wb.ActiveSheet;
+
+            int row = 1;
+            foreach (GroupData group in groups)
+            {
+                sheet.Cells[row, 1] = group.Name;
+                sheet.Cells[row, 2] = group.Header;
+                sheet.Cells[row, 3] = group.Footer;
+                row++;
+
+            }
+
+            string fullPath = Path.Combine(Directory.GetCurrentDirectory(), filename);
+            File.Delete(fullPath);
+            wb.SaveAs(fullPath);
+
+            wb.Close();
+            app.Visible = false;
+            app.Quit();
         }
 
         static void writeGroupsToCsvFile(List<GroupData> groups, StreamWriter writer)
