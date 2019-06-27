@@ -31,7 +31,23 @@ namespace WebAddressbookTests
             }
             return contacts;
         }
-        [Test, TestCaseSource("RandomContactDataProvider")]
+
+        public static IEnumerable<ContactData> ContactDataFromXmlFile()
+        {
+            List<ContactData> contacts = new List<ContactData>();
+
+            return (List<ContactData>)
+                new XmlSerializer(typeof(List<ContactData>))
+                .Deserialize(new StreamReader(TestContext.CurrentContext.TestDirectory + @"\contacts.xml"));
+        }
+
+        public static IEnumerable<ContactData> ContactDataFromJsonFile()
+        {
+            return JsonConvert.DeserializeObject<List<ContactData>>(
+                File.ReadAllText(TestContext.CurrentContext.TestDirectory + @"\contacts.json"));
+        }
+
+        [Test, TestCaseSource("ContactDataFromJsonFile")]
         public void ContactCreationTest(ContactData contact)
         {
             List<ContactData> oldContacts = app.Contacts.GetContactList();
