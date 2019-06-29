@@ -36,7 +36,6 @@ namespace WebAddressbookTests
             return this;
         }
 
-
         private List<GroupData> groupCache = null;
 
         public int GetGroupCount()
@@ -94,6 +93,18 @@ namespace WebAddressbookTests
         }
 
 
+        public GroupHelper Modify(GroupData group, GroupData nawData)
+        {
+            manager.Navigator.GoToGroupsPage();
+
+            SelectGroup(group.Id);
+            InitGroupModification();
+            FillGroupForm(nawData);
+            SubmitGroupModification();
+            ReturnToGroupsPage();
+
+            return this;
+        }
 
         public GroupHelper Create (GroupData group)
         {

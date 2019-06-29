@@ -28,7 +28,6 @@ namespace WebAddressbookTests
 
             List<GroupData> newGroups = GroupData.GetAll();
 
-            
             oldGroups.RemoveAt(0);
             Assert.AreEqual(oldGroups, newGroups);
 

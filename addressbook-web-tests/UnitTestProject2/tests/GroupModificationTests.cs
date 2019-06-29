@@ -19,25 +19,26 @@ namespace WebAddressbookTests
             app.Groups.GroupExists();
 
             GroupData nawData = new GroupData("zzz");
-            nawData.Header = null;
-            nawData.Footer = null;
+            nawData.Header = "444";
+            nawData.Footer = "4447";
 
-            List<GroupData> oldGroups = app.Groups.GetGroupList();
-            GroupData oldData = oldGroups[0];
+            List<GroupData> oldGroups = GroupData.GetAll();
+            GroupData toBeModifi = oldGroups[0];
 
-            app.Groups.Modify(0, nawData);
+
+            app.Groups.Modify(toBeModifi, nawData);
 
             Assert.AreEqual(oldGroups.Count, app.Groups.GetGroupCount());
 
-            List<GroupData> newGroups = app.Groups.GetGroupList();
-            oldGroups[0].Name = nawData.Name;
-            oldGroups.Sort();
-            newGroups.Sort();
+            List<GroupData> newGroups = GroupData.GetAll();
+            toBeModifi.Name = nawData.Name;
+           oldGroups.Sort();
+           newGroups.Sort();
             Assert.AreEqual(oldGroups, newGroups);
 
             foreach (GroupData group in newGroups)
             {
-                if (group.Id == oldData.Id)
+                if (group.Id == toBeModifi.Id)
                 {
                     Assert.AreEqual(nawData.Name, group.Name);
                 }
