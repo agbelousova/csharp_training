@@ -11,7 +11,7 @@ using OpenQA.Selenium.Support.UI;
 namespace WebAddressbookTests
 {
     [TestFixture]
-    public class ContactPropertyTest : AuthTestBase
+    public class ContactPropertyTest : ContactTestBase
     {
         [Test]
         public void CompareContactInfoFromFormAndDetailsTest()
