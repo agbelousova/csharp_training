@@ -103,6 +103,10 @@ namespace WebAddressbookTests
             SubmitGroupModification();
             ReturnToGroupsPage();
 
+            new WebDriverWait(driver, TimeSpan.FromSeconds(10))
+                .Until(d => d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
+
+
             return this;
         }
 

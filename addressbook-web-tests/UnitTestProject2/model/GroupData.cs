@@ -73,5 +73,16 @@ namespace WebAddressbookTests
 
         [Column(Name = "deprecated")]
         public string Deprecated { get; set; }
+
+
+        public List<ContactData> GetContacts()
+        {
+            using (AddressbookDB db = new AddressbookDB())
+            {
+                return (from c in db.Contacts
+                        from gsr in db.GCR.Where(p => p.GroupId == Id && p.ContactId == c.Id && c.Deprecated == "0000-00-00 00:00:00")
+                        select c).Distinct().ToList();
+            }
+        }
     }
 }
