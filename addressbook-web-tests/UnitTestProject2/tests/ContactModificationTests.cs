@@ -17,14 +17,16 @@ namespace WebAddressbookTests
 
             ContactData nawData = new ContactData("Ivanov", "Pet0000r");
 
-            List<ContactData> oldContacts = app.Contacts.GetContactList();
+            List<ContactData> oldContacts = ContactData.GetAll();
 
-            app.Contacts.ModifyContact(0, nawData);
+            ContactData toBeModifiCon = oldContacts[0];
+
+            app.Contacts.ModifyContact(toBeModifiCon, nawData);
 
             //Assert.AreEqual(oldContacts.Count, app.Contacts.GetContactCount());
 
-            List<ContactData> newContacts = app.Contacts.GetContactList();
-            oldContacts[0] = nawData;
+            List<ContactData> newContacts = ContactData.GetAll();
+            toBeModifiCon = nawData;
             oldContacts.Sort();
             newContacts.Sort();
 

@@ -34,7 +34,7 @@ namespace WebAddressbookTests
             GroupData.GetAll()[0].Name = nawData.Name;
            oldGroups.Sort();
            newGroups.Sort();
-            Assert.AreEqual(oldGroups, newGroups);
+           Assert.AreEqual(oldGroups, newGroups);
 
             foreach (GroupData group in newGroups)
             {

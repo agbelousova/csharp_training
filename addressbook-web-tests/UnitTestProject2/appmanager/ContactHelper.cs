@@ -39,6 +39,8 @@ namespace WebAddressbookTests
 
         }
 
+
+
         public void AddContactToGroup(ContactData contact, GroupData group)
         {
             manager.Navigator.GoToHomePage();
@@ -115,6 +117,22 @@ namespace WebAddressbookTests
             return this;
         }
 
+        public ContactHelper ModifyContact(ContactData contact, ContactData nawData)
+        {
+            manager.Navigator.GoToHomePage();
+            InitContactModificationC(contact.Id);
+            FillContactForm(nawData);
+            SubmitContactModification();
+            new WebDriverWait(driver, TimeSpan.FromSeconds(10))
+    .Until(d => d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
+
+            manager.Navigator.GoToHomePage();
+
+
+
+            return this;
+        }
+
         public ContactHelper SubmitContactModification()
         {
             driver.FindElement(By.Name("update")).Click();
@@ -125,6 +143,12 @@ namespace WebAddressbookTests
         public ContactHelper InitContactModification(int v)
         {
             driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + (v+1) + "]")).Click();
+            return this;
+        }
+
+        public ContactHelper InitContactModificationC(string id)
+        {
+            driver.FindElement(By.XPath("(//input[@name='selected[]' and @value= '" + id + "'])")).FindElement(By.XPath("(//img[@alt='Edit'])")).Click();
             return this;
         }
 
