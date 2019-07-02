@@ -17,15 +17,25 @@ namespace WebAddressbookTests
             List<ContactData> oldList = group.GetContacts();
             ContactData contact = oldList[0];
 
-            app.Contacts.DelContactToGroup(contact, group);
+            List<GroupData> groupAll = contact.GetGroup();
 
-            List<ContactData> newList = group.GetContacts();
-            oldList.Add(contact);
-            oldList.Sort();
-            newList.Sort();
 
-            Assert.AreNotEqual(oldList, newList);
+            if (groupAll == null)
+            {
+                app.Groups.GroupExists();
+                app.Contacts.ContactExists();
+            }
+            else
+            {
+                app.Contacts.DelContactToGroup(contact, group);
 
+                List<ContactData> newList = group.GetContacts();
+                oldList.Add(contact);
+                oldList.Sort();
+                newList.Sort();
+
+                Assert.AreNotEqual(oldList, newList);
+            }
         }
     }
 }

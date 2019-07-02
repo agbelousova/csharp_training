@@ -18,15 +18,22 @@ namespace WebAddressbookTests
             List<ContactData> oldList = group.GetContacts();
             ContactData contact = ContactData.GetAll().Except(oldList).First();
 
-            app.Contacts.AddContactToGroup(contact, group);
+            List<GroupData> groupAll = contact.GetGroup();
 
-            List<ContactData> newList = group.GetContacts();
+
+            if (oldList.Count != groupAll.Count)
+            {
+                app.Groups.GroupExists();
+                app.Contacts.ContactExists();
+                app.Contacts.AddContactToGroup(contact, group);
+
+                List<ContactData> newList = group.GetContacts();
                 oldList.Add(contact);
-            oldList.Sort();
-            newList.Sort();
+                oldList.Sort();
+                newList.Sort();
 
-            Assert.AreEqual(oldList, newList);
-
+                Assert.AreEqual(oldList, newList);
+            }
         }
     }
 }

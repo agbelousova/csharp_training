@@ -11,10 +11,12 @@ namespace WebAddressbookTests
 {
     public class GroupHelper : HalperBase
     {
-
+        private string baseURL;
         public GroupHelper(ApplicationManager manager) : base(manager)
         {
         }
+
+       
 
         public GroupHelper Remove(int v)
         {
@@ -29,6 +31,13 @@ namespace WebAddressbookTests
         public GroupHelper Remove(GroupData group)
         {
             manager.Navigator.GoToGroupsPage();
+
+            if (driver.Url == baseURL + "group.php"
+                && !IsElementPresent(By.Name("selected[]")))
+            {
+                GroupData newGroup = new GroupData("a111");
+                Create(newGroup);
+            }
 
             SelectGroup(group.Id);
             RemoveGroup();
@@ -62,6 +71,8 @@ namespace WebAddressbookTests
             return new List<GroupData>(groupCache);
 
         }
+
+        
 
         public GroupHelper GroupExists()
         {
