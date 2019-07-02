@@ -30,6 +30,17 @@ namespace addressbook_tests_autoit
             return list;
         }
 
+        public void Remove(GroupData toBeRemoved)
+        {
+            OpenGroupsDialogue();
+            aux.ControlClick(GROUPWINTITLE, "", "WindowsForms10.BUTTON.app.0.2c908d51");
+            aux.ControlTreeView(GROUPWINTITLE, "", "WindowsForms10.SysTreeView32.app.0.2c908d51",
+                "Select", "", "");
+
+            aux.ControlClick("Delete group", "", "WindowsForms10.BUTTON.app.0.2c908d53");
+            CloseGroupDialogue();
+        }
+
         public void Add(GroupData newGroup)
         {
             OpenGroupsDialogue();

@@ -6,19 +6,20 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 
 
+
 namespace addressbook_tests_autoit
 {
     public class TestBase
     {
         public ApplicationManager app;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void initApplication()
         {
             app = new ApplicationManager();
         }
 
-        [TestFixtureTearDown]
+        [OneTimeTearDown]
 
     public void stopApplication()
         {
