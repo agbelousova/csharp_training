@@ -13,21 +13,26 @@ namespace WebAddressbookTests
 
         public void DelContactToGroup()
         {
+
+            app.Groups.GroupExists();
+            app.Contacts.ContactExists();
+            ContactData contact;
+
             GroupData group = GroupData.GetAll()[0];
             List<ContactData> oldList = group.GetContacts();
-            ContactData contact = oldList[0];
+           
 
+            if (GroupData.GetAll().Count == oldList.Count) //То есть если в данную группу добавлены ВСЕ контакты
+            {
+                contact = new ContactData("321"); //Создаем новый контакт
+                app.Contacts.CreateContact(contact);
+
+            }
+
+            contact = oldList[0];
             List<GroupData> groupAll = contact.GetGroup();
 
-
-            if (groupAll == null)
-            {
-                app.Groups.GroupExists();
-                app.Contacts.ContactExists();
-            }
-            else
-            {
-                app.Contacts.DelContactToGroup(contact, group);
+            app.Contacts.DelContactToGroup(contact, group);
 
                 List<ContactData> newList = group.GetContacts();
                 oldList.Add(contact);
@@ -37,5 +42,4 @@ namespace WebAddressbookTests
                 Assert.AreNotEqual(oldList, newList);
             }
         }
-    }
-}
+ }

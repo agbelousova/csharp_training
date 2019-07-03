@@ -14,17 +14,23 @@ namespace WebAddressbookTests
 
         public void TestAddingContactToGroup ()
         {
-            GroupData group = GroupData.GetAll()[0];
-            List<ContactData> oldList = group.GetContacts();
-            ContactData contact = ContactData.GetAll().Except(oldList).First();
 
-            List<GroupData> groupAll = contact.GetGroup();
+            app.Contacts.ContactExists();
+            app.Groups.GroupExists();
+            ContactData contact;
+
+            GroupData group = GroupData.GetAll()[0];//Предполагаем, что нашего контакта нет в группе с индектом 0
+            List<ContactData> oldList = group.GetContacts(); //Запоминаем старый список контактов
 
 
-            if (oldList.Count != groupAll.Count)
+            if (GroupData.GetAll().Count == oldList.Count) //То есть если в данную группу добавлены ВСЕ контакты
             {
-                app.Groups.GroupExists();
-                app.Contacts.ContactExists();
+                contact = new ContactData("55555"); //Создаем новый контакт
+                app.Contacts.CreateContact(contact);
+
+            }
+         
+                contact = ContactData.GetAll().Except(oldList).First();
                 app.Contacts.AddContactToGroup(contact, group);
 
                 List<ContactData> newList = group.GetContacts();
@@ -33,7 +39,7 @@ namespace WebAddressbookTests
                 newList.Sort();
 
                 Assert.AreEqual(oldList, newList);
-            }
+            
         }
     }
 }

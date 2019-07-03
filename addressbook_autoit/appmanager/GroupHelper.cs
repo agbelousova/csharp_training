@@ -44,7 +44,8 @@ namespace addressbook_tests_autoit
         public void Add(GroupData newGroup)
         {
             OpenGroupsDialogue();
-            aux.ControlClick(GROUPWINTITLE, "", "WindowsForms10.BUTTON.app.0.2c908d53");
+            aux.ControlClick(GROUPWINTITLE, "", "WindowsForms10.BUTTON.app.0.2c908d512");
+            aux.ControlClick("Group editor", "", "WindowsForms10.BUTTON.app.0.2c908d53");
             aux.Send(newGroup.Name);
             aux.Send("{ENTER}");
             CloseGroupDialogue();
