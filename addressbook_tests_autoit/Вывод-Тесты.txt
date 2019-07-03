@@ -1,0 +1,21 @@
+﻿[02.07.2019 20:46:10 Informational] ------ Выполнение тестов запущено ------
+[02.07.2019 20:46:13 Warning] Нет тестов, соответствующих указанному фильтру тестовых случаев "FullyQualifiedName=addressbook_tests_autoit.GroupCreationTests.TestGroupCreation" в C:\Users\Павел\Source\Repos\agbelousova\csharp_training\addressbook_tests_autoit\bin\Debug\addressbook_tests_autoit.dll
+[02.07.2019 20:46:13 Informational] ========== Выполнение тестов завершено: 0 выполнено (0:00:03,0502475) ==========
+[02.07.2019 22:29:57 Informational] ------ Выполнение тестов запущено ------
+[02.07.2019 22:29:58 Informational] NUnit Adapter 3.13.0.0: Test execution started
+[02.07.2019 22:29:58 Informational] Running all tests in C:\Users\Павел\Source\Repos\agbelousova\csharp_training\addressbook-web-tests\UnitTestProject2\bin\Debug\UnitTestProject2.dll
+[02.07.2019 22:30:00 Informational]    NUnit3TestExecutor converted 23 of 23 NUnit test cases
+[02.07.2019 22:30:18 Informational] NUnit Adapter 3.13.0.0: Test execution complete
+[02.07.2019 22:30:18 Informational] ========== Выполнение тестов завершено: 1 выполнено (0:00:20,7688093) ==========
+[02.07.2019 22:30:44 Informational] ------ Выполнение тестов запущено ------
+[02.07.2019 22:30:45 Informational] NUnit Adapter 3.13.0.0: Test execution started
+[02.07.2019 22:30:45 Informational] Running all tests in C:\Users\Павел\Source\Repos\agbelousova\csharp_training\addressbook-web-tests\UnitTestProject2\bin\Debug\UnitTestProject2.dll
+[02.07.2019 22:30:47 Informational]    NUnit3TestExecutor converted 23 of 23 NUnit test cases
+[02.07.2019 22:31:03 Informational] NUnit Adapter 3.13.0.0: Test execution complete
+[02.07.2019 22:31:03 Informational] ========== Выполнение тестов завершено: 1 выполнено (0:00:19,1984281) ==========
+[03.07.2019 9:34:56 Informational] ------ Выполнение тестов запущено ------
+[03.07.2019 9:34:58 Warning] Нет тестов, соответствующих указанному фильтру тестовых случаев "FullyQualifiedName=addressbook_tests_autoit.GroupCreationTests.TestGroupCreation" в C:\Users\Павел\Source\Repos\agbelousova\csharp_training\addressbook_tests_autoit\bin\Debug\addressbook_tests_autoit.dll
+[03.07.2019 9:34:58 Informational] ========== Выполнение тестов завершено: 0 выполнено (0:00:02,2173108) ==========
+[03.07.2019 9:36:42 Informational] ------ Выполнение тестов запущено ------
+[03.07.2019 9:36:43 Warning] Нет тестов, соответствующих указанному фильтру тестовых случаев "FullyQualifiedName=addressbook_tests_autoit.GroupCreationTests.TestGroupCreation" в C:\Users\Павел\Source\Repos\agbelousova\csharp_training\addressbook_tests_autoit\bin\Debug\addressbook_tests_autoit.dll
+[03.07.2019 9:36:43 Informational] ========== Выполнение тестов завершено: 0 выполнено (0:00:00,8988048) ==========
