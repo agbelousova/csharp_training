@@ -40,7 +40,8 @@ namespace addressbook_tests_autoit
 
         public GroupHelper Groups
         {
-            get {
+            get
+            {
                 return groupHelper;
 
             }

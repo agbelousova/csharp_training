@@ -19,7 +19,7 @@ namespace addressbook_tests_autoit
             for (int i = 0; i < int.Parse(count); i++)
             {
                 string item = aux.ControlTreeView(GROUPWINTITLE, "", "WindowsForms10.SysTreeView32.app.0.2c908d51",
-                    "GetText", "#0|#"+i, "");
+                    "GetText", "#0|#" + i, "");
                 list.Add(new GroupData()
                 {
                     Name = item

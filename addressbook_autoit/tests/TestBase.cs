@@ -21,7 +21,7 @@ namespace addressbook_tests_autoit
 
         [OneTimeTearDown]
 
-    public void stopApplication()
+        public void stopApplication()
         {
             app.Stop();
         }
