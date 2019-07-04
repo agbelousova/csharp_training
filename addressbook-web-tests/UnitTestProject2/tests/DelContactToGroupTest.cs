@@ -22,10 +22,11 @@ namespace WebAddressbookTests
             List<ContactData> oldList = group.GetContacts();
            
 
-            if (GroupData.GetAll().Count == oldList.Count) //То есть если в данную группу добавлены ВСЕ контакты
+            if (GroupData.GetAll().Count != oldList.Count) //То есть если в данную группу добавлены не все контакты
             {
-                contact = new ContactData("321"); //Создаем новый контакт
-                app.Contacts.CreateContact(contact);
+
+                contact = ContactData.GetAll().Except(oldList).First();
+                app.Contacts.AddContactToGroup(contact, group);
 
             }
 
