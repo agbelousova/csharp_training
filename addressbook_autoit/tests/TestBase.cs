@@ -13,13 +13,13 @@ namespace addressbook_tests_autoit
     {
         public ApplicationManager app;
 
-        [OneTimeSetUp]
+        [SetUp]
         public void initApplication()
         {
             app = new ApplicationManager();
         }
 
-        [OneTimeTearDown]
+        [TearDown]
 
         public void stopApplication()
         {

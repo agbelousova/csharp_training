@@ -15,17 +15,28 @@ namespace addressbook_tests_autoit
         [Test]
         public void GroupRemovalTest()
         {
+            int numGroup = 1;
             List<GroupData> oldGroups = app.Groups.GetGroupList();
-            GroupData toBeRemoved = oldGroups[0];
 
-            app.Groups.Remove(toBeRemoved);
-
+            if (oldGroups == null)
+                if (oldGroups.Count < 2)
+                {
+                    GroupData newGroup = new GroupData()
+                    {
+                        Name = "Gruppa Name"
+                    };
+                    app.Groups.Add(newGroup);
+                }
+            GroupData dellGroup = new GroupData();
+            app.Groups.Remove(numGroup, dellGroup);
             List<GroupData> newGroups = app.Groups.GetGroupList();
 
+            oldGroups.Remove(dellGroup);
             oldGroups.Sort();
             newGroups.Sort();
+            Assert.AreEqual(oldGroups, newGroups);
 
-            Assert.AreNotEqual(oldGroups, newGroups);
-        }
+        
+    }
     }
 }

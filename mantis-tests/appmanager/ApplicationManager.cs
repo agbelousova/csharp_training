@@ -22,7 +22,8 @@ namespace mantis_tests
             driver = new FirefoxDriver();
             baseURL = "http://localhost";
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
-            
+
+            Registration = new RegistrationHelper(this);
 
         }
 
@@ -43,7 +44,7 @@ namespace mantis_tests
             if(!app.IsValueCreated)
             {
                 ApplicationManager newInstance = new ApplicationManager();
-                newInstance.driver.Url = '';
+                newInstance.driver.Url = "http://localhost/mantisbt-2.21.1/login_page.php";
                 app.Value = newInstance;
                 
             }
@@ -58,6 +59,6 @@ namespace mantis_tests
             }
         }
 
-
+        public RegistrationHelper Registration { get; set; }
     }
 }

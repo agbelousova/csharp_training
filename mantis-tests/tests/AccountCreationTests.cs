@@ -11,8 +11,16 @@ namespace mantis_tests
     public class AccountCreationTests : TestBase
     {
         [Test]
-        public void AccountCreationTests()
+        public void TestAccountRegistration()
         {
+            AccountData account = new AccountData()
+            {
+                Name = "testuser",
+                Password = "password",
+                Email = "testuser@localhost.localdomain"
+            };
+
+            app.Registration.Register(account);
 
         }
     }
