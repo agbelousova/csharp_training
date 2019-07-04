@@ -9,7 +9,7 @@ namespace mantis_tests
 {
     public class RegistrationHelper : HalperBase
     {
-        public RegistrationHelper(ApplicationManager manager) : base(manager);
+        public RegistrationHelper(ApplicationManager manager) : base(manager) { }
 
         public void Register(AccountData account)
         {
@@ -26,7 +26,7 @@ namespace mantis_tests
 
         public void SubmitRegistration()
         {
-            throw new NotImplementedException();
+            driver.FindElement(By.CssSelector("input.button")).Click();
         }
 
         public void FillRegistrationForm(AccountData account)

@@ -52,6 +52,9 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.FtpClient, Version=1.0.5824.34026, Culture=neutral, PublicKeyToken=fa4be07daa57c2b7, processorArchitecture=MSIL">
+      <HintPath>packages\System.Net.FtpClient.1.0.5824.34026\lib\net40\System.Net.FtpClient.dll</HintPath>
+    </Reference>
     <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
     </Reference>
@@ -61,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="appmanager\ApplicationManager.cs" />
+    <Compile Include="appmanager\FtpHelper.cs" />
     <Compile Include="appmanager\HalperBase.cs" />
     <Compile Include="appmanager\RegistrationHelper.cs" />
     <Compile Include="model\AccountData.cs" />
@@ -69,6 +73,9 @@
     <Compile Include="tests\TestBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="config_inc.php">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
