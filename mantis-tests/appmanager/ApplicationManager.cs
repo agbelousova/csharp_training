@@ -45,7 +45,7 @@ namespace mantis_tests
             if(!app.IsValueCreated)
             {
                 ApplicationManager newInstance = new ApplicationManager();
-                newInstance.driver.Url = "http://localhost/mantisbt-2.21.1/login_page.php";
+                newInstance.driver.Url = "http://localhost/mantisbt-1.2.17/login_page.php";
                 app.Value = newInstance;
                 
             }
