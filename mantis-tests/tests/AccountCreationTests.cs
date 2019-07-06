@@ -44,7 +44,7 @@ namespace mantis_tests
         [TearDown]
         public void restoreConfig()
         {
-          //  app.Ftp.RestoreBackupFile("/config_inc.php");
+            app.Ftp.RestoreBackupFile("/config_inc.php");
         }
     }
 }
