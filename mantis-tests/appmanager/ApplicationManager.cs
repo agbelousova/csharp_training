@@ -10,7 +10,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace mantis_tests
 {
-    public class ApplicationManager
+    public class ApplicationManager : TestBase
     {
         protected IWebDriver driver;
         protected string baseURL;
@@ -62,5 +62,7 @@ namespace mantis_tests
 
         public RegistrationHelper Registration { get; set; }
         public FtpHelper Ftp { get; set; }
+
+        public JamesHelper James { get; set; }
     }
 }

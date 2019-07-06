@@ -34,6 +34,9 @@ namespace mantis_tests
                 Email = "testuser@localhost.localdomain"
             };
 
+            app.James.Delete(account);
+            app.James.Add(account);
+
             app.Registration.Register(account);
 
         }
@@ -41,7 +44,7 @@ namespace mantis_tests
         [TearDown]
         public void restoreConfig()
         {
-            app.Ftp.RestoreBackupFile("/config_inc.php");
+          //  app.Ftp.RestoreBackupFile("/config_inc.php");
         }
     }
 }
