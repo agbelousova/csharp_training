@@ -12,6 +12,7 @@ namespace mantis_tests
     {
         public RegistrationHelper(ApplicationManager manager) : base(manager) { }
 
+
         public void Register(AccountData account)
         {
             OpenMainPage();
