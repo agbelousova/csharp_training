@@ -18,11 +18,19 @@ namespace mantis_tests
             OpenMainPage();
             OpenRegistrationForm();
             FillRegistrationForm(account);
-            SubmitRegistration();
+            // SubmitRegistration();
+            SubmitOneButtonForm();
 
             String url = GetConfirmationURL(account); 
             FillPasswordForm(url, account);
-            SubmitPasswordForm();
+            //SubmitPasswordForm();
+            SubmitOneButtonForm();
+
+        }
+
+        public void SubmitOneButtonForm()
+        {
+            driver.FindElement(By.CssSelector("input.button")).Click();
 
         }
 
@@ -40,6 +48,11 @@ namespace mantis_tests
 
         }
 
+        internal void InitLogOut()
+        {
+            driver.FindElement(By.XPath("/html/body/table[2]/tbody/tr/td[1]/a[9]")).Click(); //Клик по кнопке Логаут
+        }
+
         private string GetConfirmationURL(AccountData account)
         {
             String message = manager.Mail.GetLastMail(account);
@@ -52,10 +65,10 @@ namespace mantis_tests
              driver.FindElements(By.CssSelector("span.bracket-link"))[0].Click();
         }
 
-        public void SubmitRegistration()
-        {
-            driver.FindElement(By.CssSelector("input.button")).Click();
-        }
+      //  public void SubmitRegistration()
+      //  {
+      //      driver.FindElement(By.CssSelector("input.button")).Click();
+      //  }
 
         public void FillRegistrationForm(AccountData account)
         {
@@ -63,9 +76,16 @@ namespace mantis_tests
             driver.FindElement(By.Name("email")).SendKeys(account.Email);
         }
 
-        private void OpenMainPage()
+        public void OpenMainPage()
         {
             manager.Driver.Url = "http://localhost/mantisbt-1.2.17/login_page.php";
+        }
+
+        public void FillAuthForm(AccountData admin)
+        {
+            driver.FindElement(By.Name("username")).SendKeys(admin.Name);
+            driver.FindElement(By.Name("password")).SendKeys(admin.Password);
+
         }
     }
 }

@@ -29,13 +29,15 @@ namespace mantis_tests
             James = new JamesHelper(this);
             Mail = new MailHelper(this);
 
+            Project = new ProjectHelper(this);
+
         }
 
         ~ApplicationManager()
         {
             try
             {
-                driver.Quit();
+                Driver.Quit();
             }
             catch (Exception)
             {
@@ -69,5 +71,8 @@ namespace mantis_tests
         public JamesHelper James { get; set; }
 
         public MailHelper Mail { get; set; }
+
+        public ProjectHelper Project { get; set; }
+        public object API { get; internal set; }
     }
 }
