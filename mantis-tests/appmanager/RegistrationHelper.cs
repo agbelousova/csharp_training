@@ -28,11 +28,11 @@ namespace mantis_tests
 
         }
 
-        public void SubmitOneButtonForm()
-        {
-            driver.FindElement(By.CssSelector("input.button")).Click();
+      //  public void SubmitOneButtonForm()
+     //   {
+     //       driver.FindElement(By.CssSelector("input.button")).Click();
 
-        }
+     //   }
 
         private void SubmitPasswordForm()
         {

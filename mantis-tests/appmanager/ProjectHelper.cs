@@ -13,18 +13,17 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 namespace mantis_tests
 {
-    public class ProjectHelper : HalperBase //Чтобы не дублировать OpenMainPage
+    public class ProjectHelper : HalperBase 
     {
         public ProjectHelper(ApplicationManager manager) : base(manager) { }
-        //
 
         public void AddMantisProject(ProjectData project)
         {
-            OpenManagePage();//Открываем страницу управления
-            OpenManageProgectPage(); //Открыли страницу проектов
-            InitProjectCreation();//тыкнули CreateNewProject
-            FillNewProjectForm(project);//Заполнили форму проекта
-            manager.Registration.SubmitOneButtonForm();//Тыкнули AddProject
+            OpenManagePage();
+            OpenManageProgectPage(); 
+            InitProjectCreation();
+            FillNewProjectForm(project);
+            manager.Registration.SubmitOneButtonForm();
         }
         public void FillNewProjectForm(ProjectData project)
         {
@@ -33,25 +32,25 @@ namespace mantis_tests
         }
         public void InitProjectCreation()
         {
-            driver.FindElement(By.XPath("/html/body/table[3]/tbody/tr[1]/td/form/input[2]")).Click(); //Клик по кнопке Manage Projects
+            driver.FindElement(By.XPath("/html/body/table[3]/tbody/tr[1]/td/form/input[2]")).Click(); 
         }
         public void OpenManageProgectPage()
         {
-            driver.FindElement(By.XPath("/html/body/div[2]/p/span[2]/a")).Click(); //Клик по кнопке Manage Projects
+            driver.FindElement(By.XPath("/html/body/div[2]/p/span[2]/a")).Click(); 
         }
         public void OpenManagePage()
         {
-            driver.FindElement(By.XPath("/html/body/table[2]/tbody/tr/td[1]/a[7]")).Click(); //Клик по кнопке Manage
+            driver.FindElement(By.XPath("/html/body/table[2]/tbody/tr/td[1]/a[7]")).Click(); 
 
         }
 
         
         public void RemoveMantisProject(int N)
         {
-            OpenManagePage();//Открываем страницу управления
-            OpenManageProgectPage(); //Открыли страницу проектов
+            OpenManagePage();
+            OpenManageProgectPage(); 
 
-            driver.FindElement(By.XPath("/html/body/table[3]/tbody/tr[" + (N + 3) + "]/td[1]/a")).Click(); //тыкнули на выбранный проект
+            driver.FindElement(By.XPath("/html/body/table[3]/tbody/tr[" + (N + 3) + "]/td[1]/a")).Click(); 
             driver.FindElement(By.XPath("//input[@value='Delete Project']")).Click();
             manager.Registration.SubmitOneButtonForm();
 
@@ -61,9 +60,9 @@ namespace mantis_tests
 
         public List<ProjectData> GetProjectList()
         {
-            OpenManagePage();//Открываем страницу управления
-            OpenManageProgectPage(); //Открыли страницу проектов
-            //ICollection<IWebElement> elements = driver.FindElements(By.)
+            OpenManagePage();
+            OpenManageProgectPage(); 
+            
             List<ProjectData> projects = new List<ProjectData>();
             ICollection<IWebElement> elements = driver.FindElement(By.XPath("/html/body/table[3]/tbody"))
                 .FindElements(By.XPath(".//tr[@class='row-1' or @class='row-2']"));

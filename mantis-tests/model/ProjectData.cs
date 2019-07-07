@@ -9,8 +9,6 @@ namespace mantis_tests
 
     public class ProjectData : IComparable<ProjectData>, IEquatable<ProjectData>
     {
-        private string text1;
-        private string text2;
 
         public ProjectData(string Name, string Description)
         {
@@ -20,10 +18,9 @@ namespace mantis_tests
 
         public string Name { get; set; }
 
-        //public string Status { get; set; }
-        //public string ViewStatus  { get; set; }
         public string Description { get; set; }
 
+        public string Id { get; set; }
 
         public ProjectData()
         {
@@ -44,15 +41,15 @@ namespace mantis_tests
 
         public bool Equals(ProjectData other)
         {
-            if (object.ReferenceEquals(other, null))//Если объект с которым сравниваем это null
+            if (object.ReferenceEquals(other, null))
             {
                 return false;
             }
-            if (object.ReferenceEquals(this, other))//Если это один и тот же объект
+            if (object.ReferenceEquals(this, other))
             {
                 return true;
             }
-            return (Name == other.Name) && (Description == other.Description);//
+            return (Name == other.Name) && (Description == other.Description);
         }
 
 

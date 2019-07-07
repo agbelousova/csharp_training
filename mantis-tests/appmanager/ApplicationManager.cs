@@ -31,6 +31,8 @@ namespace mantis_tests
 
             Project = new ProjectHelper(this);
 
+            Admin = new AdminHelper(this, baseURL);
+            API = new APIHelper(this);
         }
 
         ~ApplicationManager()
@@ -50,7 +52,9 @@ namespace mantis_tests
             if(!app.IsValueCreated)
             {
                 ApplicationManager newInstance = new ApplicationManager();
-                newInstance.driver.Url = "http://localhost/mantisbt-1.2.17/login_page.php";
+                   newInstance.driver.Url = "http://localhost/mantisbt-1.2.17/login_page.php";
+               // newInstance.driver.Url = newInstance.baseURL + "/login_page.php";
+
                 app.Value = newInstance;
                 
             }
@@ -73,6 +77,10 @@ namespace mantis_tests
         public MailHelper Mail { get; set; }
 
         public ProjectHelper Project { get; set; }
-        public object API { get; internal set; }
+       // public object API { get; internal set; }
+
+        public AdminHelper Admin { get; set; }
+
+        public APIHelper API { get; set; }
     }
 }
